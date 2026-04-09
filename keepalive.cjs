@@ -1,5 +1,27 @@
 const fs = require('fs');
 const path = require('path');
+
+// === 临时调试：扫描目录结构 ===
+function debugScan(dir, depth = 0) {
+  if (depth > 3) return;
+  try {
+    for (const item of fs.readdirSync(dir)) {
+      const full = path.join(dir, item);
+      const isDir = fs.statSync(full).isDirectory();
+      console.log('  '.repeat(depth) + (isDir ? '📁' : '📄') + ' ' + item);
+      if (isDir) debugScan(full, depth + 1);
+    }
+  } catch(e) {
+    console.log('  '.repeat(depth) + '❌ 无法读取: ' + dir);
+  }
+}
+
+console.log('=== 扫描 /home/node/app/data ===');
+debugScan('/home/node/app/data');
+// === 调试结束 ===
+
+const fs = require('fs');
+const path = require('path');
 const https = require('https');
 
 // 配置
