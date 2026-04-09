@@ -115,7 +115,7 @@
     },
     "version": "1.17.0",
     "scripts": {
-        "start": "node start.js",
+        "start": "node keepalive.js",
         "debug": "node --inspect server.js",
         "start:global": "node server.js --global",
         "start:electron": "cd ./src/electron && npm run start",
