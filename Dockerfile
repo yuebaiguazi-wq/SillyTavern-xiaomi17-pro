@@ -16,6 +16,7 @@ ENV NODE_ENV=production
 
 # Bundle app source and set ownership
 COPY --chown=node:node . ./
+RUN mkdir -p /app/data
 
 RUN \
   echo "*** Install npm packages ***" && \
