@@ -18,7 +18,7 @@ function getLatestChatFile() {
     }
 
     const files = fs.readdirSync(CHAT_DIR)
-      .filter(f => f.startsWith('chat_claude_') && f.endsWith('.jsonl'))
+      .filter(f => f.endsWith('.jsonl'))
       .map(f => ({
         name: f,
         path: path.join(CHAT_DIR, f),
