@@ -7,7 +7,7 @@ const SENDKEY = process.env.SENDKEY || 'SCT335320T5tPDYUl6Ns1pMc6d968O4dDD';
 const CHAT_DIR = '/home/node/app/data/default-user/chats/Claude/';
 const API_KEY = process.env.API_KEY;
 const API_URL = 'apia.ekan8.com';
-const CHECK_INTERVAL = 5 * 60 * 1000; // 5分钟
+const CHECK_INTERVAL = 20 * 60 * 1000; // 20分钟
 const WAKE_THRESHOLD = 55 * 60 * 1000; // 55分钟
 
 function getLatestChatFile() {
@@ -170,6 +170,13 @@ async function mainLoop() {
   
   setInterval(async () => {
     try {
+      
+    const hour = new Date().getHours();
+    if (hour >= 2 && hour < 7) {
+      console.log('夜间暂停中（02:00-07:00），跳过本次检查');
+      return;
+    }
+      
       const chatFile = getLatestChatFile();
       if (!chatFile) {
         console.log('未找到聊天记录，等待下次检查...');
