@@ -1,30 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-
-// === 临时调试：扫描目录结构 ===
-function debugScan(dir, depth = 0) {
-  if (depth > 3) return;
-  try {
-    for (const item of fs.readdirSync(dir)) {
-      const full = path.join(dir, item);
-      const isDir = fs.statSync(full).isDirectory();
-      console.log('  '.repeat(depth) + (isDir ? '📁' : '📄') + ' ' + item);
-      if (isDir) debugScan(full, depth + 1);
-    }
-  } catch(e) {
-    console.log('  '.repeat(depth) + '❌ 无法读取: ' + dir);
-  }
-}
-
-console.log('=== 扫描 /home/node/app/data ===');
-debugScan('/home/node/app/data');
-// === 调试结束 ===
-
 const https = require('https');
 
 // 配置
 const SENDKEY = process.env.SENDKEY || 'SCT335320T5tPDYUl6Ns1pMc6d968O4dDD';
-const CHAT_DIR = '/home/node/app/data/default-user/chats/';
+const CHAT_DIR = '/home/node/app/data/default-user/chats/Claude/';
 const API_KEY = process.env.API_KEY;
 const API_URL = 'apia.ekan8.com';
 const CHECK_INTERVAL = 5 * 60 * 1000; // 5分钟
