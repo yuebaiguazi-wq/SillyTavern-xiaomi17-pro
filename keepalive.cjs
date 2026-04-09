@@ -164,6 +164,10 @@ async function mainLoop() {
   console.log('定时任务已启动，每5分钟检查一次...');
   console.log(`监控目录: ${path.resolve(CHAT_DIR)}`);
 
+  // 立即执行一次测试（仅测试微信推送）
+  console.log('执行一次测试推送...');
+  await sendWechat('测试消息：系统已启动，链路正常！');
+  
   setInterval(async () => {
     try {
       const chatFile = getLatestChatFile();
