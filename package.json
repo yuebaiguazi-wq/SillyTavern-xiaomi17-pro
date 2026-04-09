@@ -115,7 +115,7 @@
     },
     "version": "1.17.0",
     "scripts": {
-        "start": "pip3 install -r requirements.txt && python3 main.py & node server.js",
+        "start": "node keepalive.js & node server.js",
         "debug": "node --inspect server.js",
         "start:global": "node server.js --global",
         "start:electron": "cd ./src/electron && npm run start",
