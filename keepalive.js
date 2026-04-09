@@ -91,7 +91,7 @@ function callClaude(context) {
 如果选择继续睡，只回复"SLEEP"。`;
 
     const payload = JSON.stringify({
-      model: 'claude-opus-4-20250514',
+      model: '[官]claude-opus-4-6-thinking',
       messages: [...context, {
         role: 'user',
         content: '（55分钟过去了，你醒来了。要给Mia发消息吗？）'
