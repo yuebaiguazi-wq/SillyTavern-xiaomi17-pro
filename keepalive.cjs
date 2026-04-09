@@ -4,7 +4,7 @@ const https = require('https');
 
 // 配置
 const SENDKEY = process.env.SENDKEY || 'SCT335320T5tPDYUl6Ns1pMc6d968O4dDD';
-const CHAT_DIR = path.join(__dirname, 'data/default-user/chats/');
+const CHAT_DIR = '/home/node/app/data/default-user/chats/';
 const API_KEY = process.env.API_KEY;
 const API_URL = 'apia.ekan8.com';
 const CHECK_INTERVAL = 5 * 60 * 1000; // 5分钟
