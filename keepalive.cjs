@@ -20,8 +20,6 @@ console.log('=== 扫描 /home/node/app/data ===');
 debugScan('/home/node/app/data');
 // === 调试结束 ===
 
-const fs = require('fs');
-const path = require('path');
 const https = require('https');
 
 // 配置
