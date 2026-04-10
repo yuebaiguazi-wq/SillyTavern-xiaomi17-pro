@@ -75,12 +75,10 @@ enableCorsProxy: false
 cors:
   # Enable or disable CORS middleware
   enabled: true
-  origin:
-    - "*"
   # Allowed origins. Use "null" to match the default browser file origin.
   # You can set "*" to allow any origin, or a list of allowed origins.
   origin:
-    - "null"
+    - "*"
   # Allowed methods
   methods:
     - "OPTIONS"
