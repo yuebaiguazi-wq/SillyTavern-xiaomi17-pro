@@ -1,4 +1,4 @@
-const WS_URL = "wss://你的Railway域名/ws";
+const WS_URL = "wss://jinglimia-s-claude-toy-production.up.railway.app/ws";
 let ws = null;
 
 function connectWS() {
