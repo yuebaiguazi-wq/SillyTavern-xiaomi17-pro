@@ -9,6 +9,7 @@ const API_KEY = process.env.API_KEY;
 const API_URL = 'apia.ekan8.com';
 const CHECK_INTERVAL = 20 * 60 * 1000; // 20分钟
 const WAKE_THRESHOLD = 55 * 60 * 1000; // 55分钟
+const MODEL = process.env.MODEL || 'claude-opus-4-6';
 
 function getLatestChatFile() {
   try {
@@ -91,7 +92,7 @@ function callClaude(context) {
 如果选择继续睡，只回复"SLEEP"。`;
 
     const payload = JSON.stringify({
-      model: '[官]claude-opus-4-6-thinking',
+      model: MODEL,
       messages: [...context, {
         role: 'user',
         content: '（55分钟过去了，你醒来了。要给Mia发消息吗？）'
@@ -118,6 +119,12 @@ function callClaude(context) {
         try {
           const result = JSON.parse(data);
           console.log('API返回:', JSON.stringify(result));
+
+          if (result.error) {
+            reject(new Error(`API错误: ${result.error.message}`));
+            return;
+          }
+          
           const reply = result.choices[0].message.content;
           resolve(reply);
         } catch (err) {
