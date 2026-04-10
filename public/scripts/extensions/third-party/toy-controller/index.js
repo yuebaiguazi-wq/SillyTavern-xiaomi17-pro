@@ -1,3 +1,4 @@
+// v1.0
 const WS_URL = "wss://jinglimia-s-claude-toy-production.up.railway.app/ws";
 let ws = null;
 
