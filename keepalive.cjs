@@ -117,6 +117,7 @@ function callClaude(context) {
       res.on('end', () => {
         try {
           const result = JSON.parse(data);
+          console.log('API返回:', JSON.stringify(result));
           const reply = result.choices[0].message.content;
           resolve(reply);
         } catch (err) {
