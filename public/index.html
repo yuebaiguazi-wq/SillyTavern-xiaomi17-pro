@@ -8174,29 +8174,25 @@
 (function() {
   const WS_URL = "wss://jinglimia-s-claude-toy-production.up.railway.app/ws";
   let ws = null;
+  let lastText = '';
+
   function connectWS() {
     ws = new WebSocket(WS_URL);
     ws.onclose = () => setTimeout(connectWS, 3000);
   }
   connectWS();
 
-  const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      mutation.addedNodes.forEach(function(node) {
-        if (node.nodeType !== 1) return;
-        const text = node.innerText || "";
-        if (!ws || ws.readyState !== WebSocket.OPEN) return;
-        const setMatch = text.match(/\[SET:(\d+)\]/);
-        if (setMatch) { ws.send(JSON.stringify({ type: 'set', value: setMatch[1] })); return; }
-        if (text.includes("[STOP]")) { ws.send(JSON.stringify({ type: 'stop' })); }
-      });
-    });
-  });
-
-  window.addEventListener('load', function() {
-    const chat = document.getElementById('chat');
-    if (chat) observer.observe(chat, { childList: true, subtree: true });
-  });
+  setInterval(function() {
+    const messages = document.querySelectorAll('.mes_text');
+    if (!messages.length) return;
+    const text = messages[messages.length - 1].innerText || '';
+    if (text === lastText) return;
+    lastText = text;
+    if (!ws || ws.readyState !== WebSocket.OPEN) return;
+    const setMatch = text.match(/\[SET:(\d+)\]/);
+    if (setMatch) { ws.send(JSON.stringify({ type: 'set', value: setMatch[1] })); return; }
+    if (text.includes('[STOP]')) { ws.send(JSON.stringify({ type: 'stop' })); }
+  }, 1000);
 })();
 </script>
     </script>
