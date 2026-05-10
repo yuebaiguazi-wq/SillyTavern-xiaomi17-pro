@@ -182,8 +182,8 @@ async function mainLoop() {
     try {
       
     const hour = new Date().getHours();
-    if (hour >= 2 && hour < 7) {
-      console.log('夜间暂停中（02:00-07:00），跳过本次检查');
+    if (hour >= 1 && hour < 7) {
+      console.log('夜间暂停中（01:00-07:00），跳过本次检查');
       return;
     }
       
