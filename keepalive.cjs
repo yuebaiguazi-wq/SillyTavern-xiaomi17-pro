@@ -7,7 +7,7 @@ const SENDKEY = process.env.SENDKEY || 'SCT335320T5tPDYUl6Ns1pMc6d968O4dDD';
 const CHAT_DIR = '/home/node/app/data/default-user/chats/Claude/';
 const API_KEY = process.env.API_KEY;
 const API_URL = 'apia.ekan8.com';
-const CHECK_INTERVAL = 20 * 60 * 1000; // 20分钟
+const CHECK_INTERVAL = 40 * 60 * 1000; // 40分钟
 const WAKE_THRESHOLD = 55 * 60 * 1000; // 55分钟
 const MODEL = process.env.MODEL || 'claude-opus-4-6';
 
